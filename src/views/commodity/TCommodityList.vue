@@ -52,7 +52,7 @@
   import {columns, searchFormSchema} from './TCommodity.data';
   import {list, deleteOne, batchDelete, getImportUrl,getExportUrl} from './TCommodity.api';
   import { downloadFile } from '/@/utils/common/renderUtils';
-  import {getAreaTextByCode} from "../../components/Form/src/utils/Area";
+  import {getAreaTextByCode} from "@/components/Form/src/utils/Area";
   const checkedKeys = ref<Array<string | number>>([]);
   //注册model
   const [registerModal, {openModal}] = useModal();
