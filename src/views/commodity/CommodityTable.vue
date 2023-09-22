@@ -3,11 +3,6 @@
     <template #tableTitle>
       <a-button type="primary" @click="handleAdd" preIcon="ant-design:plus-outlined"> 新增
       </a-button>
-      <!--<a-button type="primary" preIcon="ant-design:export-outlined" @click="onExportXls"> 导出-->
-      <!--</a-button>-->
-      <!--<j-upload-button type="primary" preIcon="ant-design:import-outlined" @click="onImportXls">-->
-      <!--  导入-->
-      <!--</j-upload-button>-->
       <a-dropdown v-if="selectedRowKeys.length > 0">
         <template #overlay>
           <a-menu>
@@ -47,8 +42,9 @@ import {useListPage} from "@/hooks/system/useListPage";
 import TCommodityModal from "@/views/commodity/components/TCommodityModal.vue";
 import JUploadButton from "@/components/Button/src/JUploadButton.vue";
 import {ref} from "@vue/runtime-core";
+import {useDrawer} from "@/components/Drawer";
 
-const [registerModal, {openModal}] = useModal();
+const [registerModal, {openDrawer}] = useDrawer();
 
 // const [registerTable, {reload}] = useTable({
 //     title: '商品信息',
@@ -106,7 +102,7 @@ const [registerTable, {reload}, {rowSelection, selectedRowKeys}] = tableContext
  * 新增事件
  */
 function handleAdd() {
-    openModal(true, {
+    openDrawer(true, {
         isUpdate: false,
         showFooter: true,
     });
@@ -116,7 +112,7 @@ function handleAdd() {
  * 编辑事件
  */
 function handleEdit(record: Recordable) {
-    openModal(true, {
+    openDrawer(true, {
         record,
         isUpdate: true,
         showFooter: true,
@@ -127,7 +123,7 @@ function handleEdit(record: Recordable) {
  * 详情
  */
 function handleDetail(record: Recordable) {
-    openModal(true, {
+    openDrawer(true, {
         record,
         isUpdate: true,
         showFooter: false,
